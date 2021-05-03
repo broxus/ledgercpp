@@ -105,9 +105,9 @@ namespace ledger {
 	void HID::close() noexcept {
 		if (opened_) {
 			hid_close(device_);
-			hid_exit();
 			opened_ = false;
 		}
+		hid_exit();
 	}
 
 	bool HID::is_open() const {
