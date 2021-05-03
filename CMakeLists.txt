@@ -37,3 +37,17 @@ target_include_directories(ledgercpp
         PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         )
+
+file(GLOB_RECURSE EDV_INCLUDE_FILES "ledgercpp/*.hpp*")
+set_target_properties(ledgercpp
+        PROPERTIES
+        PUBLIC_HEADER "${EDV_INCLUDE_FILES}"
+        )
+
+include(GNUInstallDirs)
+install(TARGETS ledgercpp
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ledgercpp
+        )
